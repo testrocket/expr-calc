@@ -10,6 +10,9 @@ class Token(object):
     OP_SUB = 7
     OP_MUL = 8
     OP_DIV = 9
+    OP_POW = 10
+    OP_EQ = 11
+    PUNC_SEMICOLON = 20
 
     def __init__(self, value, ttype):
         self.value = value
@@ -53,10 +56,14 @@ def tokenize(expr):
             ttype = Token.OP_MUL
         elif c == '/':
             ttype = Token.OP_DIV
+        elif c == '=':
+            ttype = Token.OP_EQ
         elif c == '(':
             ttype = Token.PAREN_LEFT
         elif c == ')':
             ttype = Token.PAREN_RIGHT
+        elif c == ';':
+            ttype = Token.PUNC_SEMICOLON
         else:
             ttype = Token.UNKNOWN
 
