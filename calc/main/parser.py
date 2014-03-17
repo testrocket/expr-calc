@@ -6,9 +6,16 @@ def parse_rpn(expr):
     tokens_list = tokens.tokenize(expr)
 
     result, tmp = [], []
-    for token in tokens_list:
+    i, n = 0, len(tokens_list)
+    while i < n:
+        token = tokens_list[i]
         if token.ttype in [tokens.Token.INT, tokens.Token.DOUBLE]:
             result.append(token)
+        elif token.ttype == tokens.Token.ID:
+            if (i + 1) < n and tokens_list[i + 1].ttype == tokens.Token.PAREN_LEFT:
+                tmp.append(token)
+            else:
+                result.append(token) 
         elif token.ttype == tokens.Token.PAREN_LEFT:
             tmp.append(token)
         elif token.ttype in tokens.Token.OPERATORS:
@@ -20,6 +27,11 @@ def parse_rpn(expr):
             while tmp and tmp[len(tmp) - 1].ttype != tokens.Token.PAREN_LEFT:
                 result.append(tmp.pop())
             tmp.pop()
+
+            if tmp and tmp[len(tmp) - 1].ttype == tokens.Token.ID:
+                result.append(tmp.pop())
+
+        i += 1
 
     while tmp:
         result.append(tmp.pop())
@@ -34,4 +46,3 @@ def operator_priority(token):
     elif tt == tokens.Token.OP_POW:
         return 3
     return -1
-
