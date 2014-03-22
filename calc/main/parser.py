@@ -39,7 +39,9 @@ def parse_rpn(expr):
 
 def operator_priority(token):
     tt = token.ttype
-    if tt == tokens.Token.OP_ADD or tt == tokens.Token.OP_SUB:
+    if tt == tokens.Token.OP_EQ:
+        return 0
+    elif tt == tokens.Token.OP_ADD or tt == tokens.Token.OP_SUB:
         return 1
     elif tt == tokens.Token.OP_MUL or tt == tokens.Token.OP_DIV:
         return 2
