@@ -25,3 +25,11 @@ class TestParser(unittest.TestCase):
     def test_calculate5(self):
         result = calc.calculate("1 + cos(rad(90))")
         assert result == 1, "Incorrect calculation result: %s" % result
+
+    def test_calculate6(self):
+        result = calc.calculate("2 ^ 3")
+        assert result == 8, "Incorrect calculation result: %s" % result
+
+    def test_calculate7(self):
+        result = calc.calculate("2 ^ 3 * 2 + 10")
+        assert result == 26, "Incorrect calculation result: %s" % result
