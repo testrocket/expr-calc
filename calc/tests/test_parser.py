@@ -10,3 +10,6 @@ class TestParser(unittest.TestCase):
         result = str(parser.parse_rpn(self.expr))
         assert result == "[a, 2, 2, 1, -, sin, *, +, b, +]", "Incorrect parse result: %s" % result
 
+    def test_parse2(self):
+        result = str(parser.parse_rpn("a = 1 + 2 * 4"))
+        assert result == "[a, 1, 2, 4, *, +, =]", "Incorrect parse result: %s" % result

@@ -14,7 +14,9 @@ def calculate(expr):
         "float": lambda stack: stack.append(float(stack.pop())),
     }
 
-    for token in parse_result:
+    i = 0
+    while i < len(parse_result):
+        token = parse_result[i]
         tt = token.ttype
         if tt == tokens.Token.INT:
             stack.append(int(token.value))
@@ -35,4 +37,5 @@ def calculate(expr):
         elif tt == tokens.Token.ID:
             func = symbol_table[token.value]
             func(stack)
+        i += 1
     return stack.pop()
