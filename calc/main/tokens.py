@@ -60,6 +60,8 @@ def tokenize(expr):
             ttype = Token.OP_DIV
         elif c == '=':
             ttype = Token.OP_EQ
+        elif c == '^':
+            ttype = Token.OP_POW
         elif c == '(':
             ttype = Token.PAREN_LEFT
         elif c == ')':
