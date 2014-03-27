@@ -33,3 +33,11 @@ class TestParser(unittest.TestCase):
     def test_calculate7(self):
         result = calc.calculate("2 ^ 3 * 2 + 10")
         assert result == 26, "Incorrect calculation result: %s" % result
+
+    def test_calculate8(self):
+        result = calc.calculate("2 * int(2 + 1.9)")
+        assert result == 6, "Incorrect calculation result: %s" % result
+
+    def test_calculate9(self):
+        result = calc.calculate("int(1.3 + 1.9) ^ int(2 + 1.9)")
+        assert result == 27, "Incorrect calculation result: %s" % result
