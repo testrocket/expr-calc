@@ -14,7 +14,7 @@ class Token(object):
     OP_EQ = 11
     PUNC_SEMICOLON = 20
 
-    OPERATORS = [OP_ADD, OP_SUB, OP_MUL, OP_DIV, OP_POW]
+    OPERATORS = [OP_ADD, OP_SUB, OP_MUL, OP_DIV, OP_POW, OP_EQ]
 
     def __init__(self, value, ttype):
         self.value = value
